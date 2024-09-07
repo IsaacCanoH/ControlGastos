@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="title">
+                <h1>Ingresar</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="left"><a routerLink="/inicio-usuario">Control de Gastos</a></li>
+                    <li class="right"><a routerLink="/ingresos/list">Mis Ingresos</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main-content">
+            <div class="container">
+                <h1></h1>
+                <form id="registroForm" class="form-grid" (ngSubmit)="saveIngreso()">
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <select id="tipoIngreso" name="tipoIngreso" [(ngModel)]="ingreso.TipoIngreso" required>
+                                <option value="" disabled selected>Selecciona tipo de ingreso</option>
+                                <option value="Venta de Servicios">Venta de Servicios</option>
+                                <option value="Venta en Tienda Física">Venta en Tienda Física</option>
+                                <option value="Venta Corporativa">Venta Corporativa</option>
+                                <option value="Promociones y Ofertas">Promociones y Ofertas</option>
+                                <option value="Eventos Especiales">Eventos Especiales</option>
+                                <option value="Inversiones">Inversiones</option>
+                                <option value="Intereses y Rendimientos">Intereses y Rendimientos</option>
+                                <option value="Patrocinios y Colaboraciones">Patrocinios y Colaboraciones</option>
+                                <option value="Comisiones por Referencias">Comisiones por Referencias</option>
+                                <option value="Cursos y Talleres">Cursos y Talleres</option>
+                            </select>
+                            <label for="tipoIngreso">Tipo de ingreso</label>
+                            <span class="info-icon">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip">Seleccione el tipo de ingreso.</span>
+                            </span>
+                        </div>
+                        <div class="error-message" *ngIf="errorMessages['TipoIngreso']">
+                            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['TipoIngreso'] }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="text" id="origenIngreso" name="origenIngreso" placeholder=" " [(ngModel)]="ingreso.OrigenIngreso" required>
+                            <label for="origenIngreso">Origen del ingreso</label>
+                            <span class="info-icon">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip">Especifica de dónde proviene el ingreso.</span>
+                            </span>
+                        </div>
+                        <div class="error-message" *ngIf="errorMessages['OrigenIngreso']">
+                            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['OrigenIngreso'] }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <select id="categoria" name="categoria" [(ngModel)]="ingreso.Categoria" required>
+                                <option value="" disabled selected>Selecciona categoría</option>
+                                <option value="Diseño y Personalización">Diseño y Personalización</option>
+                                <option value="Servicios de Consultoría">Servicios de Consultoría</option>
+                                <option value="Ingresos por Inversiones">Ingresos por Inversiones</option>
+                                <option value="Ingresos por Intereses">Ingresos por Intereses</option>
+                                <option value="Dividendos">Dividendos</option>
+                                <option value="Patrocinios">Patrocinios</option>
+                                <option value="Comisiones por Referencias">Comisiones por Referencias</option>
+                                <option value="Cursos y Talleres">Cursos y Talleres</option>
+                                <option value="Derechos de Autor o Licencias">Derechos de Autor o Licencias</option>
+                                <option value="Subvenciones y Ayudas">Subvenciones y Ayudas</option>
+                            </select>
+                            <label for="categoria">Categoría</label>
+                            <span class="info-icon">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip">Selecciona la categoria del ingreso.</span>
+                            </span>
+                        </div>
+                        <div class="error-message" *ngIf="errorMessages['Categoria']">
+                            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Categoria'] }}
+                        </div>
+                    </div>                  
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="number" id="monto" name="monto" placeholder=" " [(ngModel)]="ingreso.Monto" required>
+                            <label for="monto">Monto</label>
+                            <span class="info-icon">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip">La cantidad exacta que recibiste.</span>
+                            </span>
+                        </div>
+                        <div class="error-message" *ngIf="errorMessages['Monto']">
+                            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Monto'] }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="date" id="fechaIngreso" name="fechaIngreso" placeholder=" " [(ngModel)]="ingreso.FechaIngreso" required>
+                            <label for="fechaIngreso">Fecha de ingreso</label>
+                            <span class="info-icon">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip">Registra la fecha en que recibes el ingreso.</span>
+                            </span>
+                        </div>
+                        <div class="error-message" *ngIf="errorMessages['FechaIngreso']">
+                            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['FechaIngreso'] }}
+                        </div>
+                    </div>
+                    <button type="submit"><i class="fas fa-check"></i></button>
+                </form>
+            </div>
+        </main>   
+    </div>
+</body>
+</html>
